@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:17
+    container_name: relayscope-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: relayscope
+      POSTGRES_USER: relayscope_user
+      POSTGRES_PASSWORD: relayscope_dev_password
+    ports:
+      - "5433:5432"
+    volumes:
+      - relayscope_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  relayscope_postgres_data:
